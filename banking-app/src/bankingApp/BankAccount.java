@@ -123,31 +123,27 @@ public class BankAccount {
                     System.out.println("Thanks for banking with us. You're welcome back any time!");
                     break;
                 case 'R':
+                    // TODO Rename method is not working correctly
                     System.out.println("-----------------------------------------------------------------------------");
                     System.out.println("Account name: "+customerName);
                     System.out.println("Account ID: "+customerId);
                     System.out.println("Account balance: "+balance);
                     System.out.println("-----------------------------------------------------------------------------");
-                    System.out.println("To change account owner name enter R,");
+                    System.out.println("To change account owner name type N,");
                     System.out.println("to exit to main options enter any other key.");
                     char input = scanner.next().charAt(0);
-                    if(input != 'R') {
+                    if(input != 'N') {
                         option = 'X';
                     } else {
                         System.out.println("Enter new name for account owner:");
-                        String name = scanner.next();
+                        String name = scanner.nextLine();
                         setCustomerName(name);
                         System.out.println("Customer name successfully changed");
 
                     }
                     break;
                 default:
-                    System.out.println("A. Check account balance");
-                    System.out.println("B. Deposit funds to account");
-                    System.out.println("C. Withdraw funds from account");
-                    System.out.println("D. Last transaction details");
-                    System.out.println("R. Rename account owner");
-                    System.out.println("E. Exit");
+                    System.out.println("OPTIONS: A - Check account balance; B - Deposit funds to account; C - Withdraw funds from account; D - Last transaction details; R - Rename account owner; E - Exit;");
                     System.out.println("Please enter UPPERCASE letter to select an option");
                     System.out.println("=====================================================================================");
                     option = scanner.next().charAt(0);
