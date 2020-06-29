@@ -6,7 +6,7 @@ public class Hammer extends Item implements Weapon {
     private static double strength = 5;
 
     public Hammer() {
-        super("Haamer", strength, 1);
+        super("Hammer", strength, 1);
     }
 
     @Override

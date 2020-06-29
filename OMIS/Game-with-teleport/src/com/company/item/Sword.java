@@ -4,7 +4,7 @@ import com.company.character.Enemy;
 
 public class Sword extends Item implements Weapon {
     public Sword() {
-        super("Mõõk", 5, 1);
+        super("Sword", 5, 1);
     }
 
     @Override

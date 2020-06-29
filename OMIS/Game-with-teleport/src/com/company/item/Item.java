@@ -7,7 +7,7 @@ public class Item implements WorldObject {
     private int xCoord;
     private int yCoord;
 
-    private String name;
+    private static String name;
     private double strength;
     private int endurance;
     private int level;
@@ -42,7 +42,7 @@ public class Item implements WorldObject {
        return ItemType.STANDARD;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 

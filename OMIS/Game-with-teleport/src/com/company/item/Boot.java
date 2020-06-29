@@ -6,7 +6,7 @@ public class Boot extends Item implements Weapon {
     private static double strength = 1.5;
 
     public Boot() {
-        super("Saabas", strength, 10);
+        super("Boot", strength, 10);
     }
 
     @Override

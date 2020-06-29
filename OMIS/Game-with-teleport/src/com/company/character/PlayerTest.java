@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
 
-
-
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
         Player Player = new Player("Tester", CharacterType.WIZARD);
@@ -39,4 +37,5 @@ class PlayerTest {
         com.company.character.Player.setFullHealth();
         assertEquals(10, com.company.character.Player.getHealth());
     }
+
 }
