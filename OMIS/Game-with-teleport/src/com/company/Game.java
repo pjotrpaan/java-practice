@@ -23,7 +23,7 @@ public class Game {
         Sword sword = new Sword();
         Teleporter teleporter = new Teleporter();
 
-        startTimer(timer, enemy);
+//        startTimer(timer, enemy);
 
         player.getInventory().addItem(new Hammer());
         player.getInventory().addItem(new Sword());
@@ -98,15 +98,19 @@ public class Game {
 
     private static void findItem(Player player, Hammer hammer, Sword sword, Boot boot, Teleporter teleporter) {
         if (player.getxCoord() == hammer.getxCoord() && player.getyCoord() == hammer.getyCoord()) {
+            System.out.println("Hooray, Found hammer!");
             player.getInventory().addItem(hammer);
         }
         if (player.getxCoord() == sword.getxCoord() && player.getyCoord() == sword.getyCoord()) {
+            System.out.println("Hooray, Found sword!");
             player.getInventory().addItem(sword);
         }
         if (player.getxCoord() == boot.getxCoord() && player.getyCoord() == boot.getyCoord()) {
+            System.out.println("Hooray, Found boot!");
             player.getInventory().addItem(boot);
         }
         if (player.getxCoord() == teleporter.getxCoord() && player.getyCoord() == teleporter.getyCoord()) {
+            System.out.println("Hooray, Found teleporter!");
             player.getInventory().addItem(teleporter);
         }
     }

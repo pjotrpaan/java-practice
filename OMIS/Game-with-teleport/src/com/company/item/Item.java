@@ -56,7 +56,7 @@ public class Item implements WorldObject {
 
     @Override
     public String toString() {
-        return name + " tugevusega " + strength*1 + ". Kasutuskordi: " + endurance;
+        return name + " with strength " + strength*1 + ". Endurance: " + endurance;
     }
 
     public double getStrength() {

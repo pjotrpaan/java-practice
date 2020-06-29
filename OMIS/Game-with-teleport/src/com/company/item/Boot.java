@@ -13,7 +13,7 @@ public class Boot extends Item implements Weapon {
     public void hit() {
        double healthLeft = Enemy.getHealth() - strength*randomStrength();
        Enemy.setHealth(healthLeft);
-        System.out.println("Lõid saapaga");
+        System.out.println("You kicked enemy with the boot.");
     }
 
     private double randomStrength() {

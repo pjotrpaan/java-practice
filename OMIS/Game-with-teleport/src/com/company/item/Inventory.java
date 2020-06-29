@@ -11,9 +11,9 @@ public class Inventory {
     public void addItem(Item item) {
         if (inventory.size() <= inventoryMaxSize) {
             inventory.add(item);
-            System.out.println("Lisatud asjade hulka: " + item);
+            System.out.println("Picked up and added to loot: " + item);
         } else {
-            System.out.printf("Eset %s ei lisatud asjade hulka %n", item.getName());
+            System.out.printf("Item %s was not added to loot %n", item.getName());
         }
     }
 

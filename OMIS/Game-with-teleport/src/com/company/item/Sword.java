@@ -10,6 +10,6 @@ public class Sword extends Item implements Weapon {
     @Override
     public void hit() {
         Enemy.setHealth(0);
-        System.out.println("Lõid mõõgaga");
+        System.out.println("You used the sword with serious consequences.");
     }
 }
