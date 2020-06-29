@@ -43,20 +43,8 @@ public class BankAccount {
         }
     }
 
-    public String getCustomerName() {
-        return customerName;
-    }
-
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
-    }
-
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
     }
 
     void showMenu() {
@@ -82,9 +70,11 @@ public class BankAccount {
             switch (option) {
                 case 'A':
                     System.out.println("-----------------------------------------------------------------------------");
+                    System.out.println("CUSTOMER ACCOUNT OVERVIEW");
+                    System.out.println("-----------------------------------------------------------------------------");
                     System.out.println("Account name: "+customerName);
                     System.out.println("Account ID: "+customerId);
-                    System.out.println("Account balance: "+balance);
+                    System.out.println("Account balance: "+balance+currency);
                     System.out.println("-----------------------------------------------------------------------------");
                     option = 'X';
                     break;
@@ -123,27 +113,27 @@ public class BankAccount {
                     System.out.println("Thanks for banking with us. You're welcome back any time!");
                     break;
                 case 'R':
-                    // TODO Rename method is not working correctly
                     System.out.println("-----------------------------------------------------------------------------");
                     System.out.println("Account name: "+customerName);
-                    System.out.println("Account ID: "+customerId);
-                    System.out.println("Account balance: "+balance);
                     System.out.println("-----------------------------------------------------------------------------");
-                    System.out.println("To change account owner name type N,");
-                    System.out.println("to exit to main options enter any other key.");
+                    System.out.println("To change account owner name type R,");
+                    System.out.println("to exit to main options type any other key.");
                     char input = scanner.next().charAt(0);
-                    if(input != 'N') {
+                    if(input != 'R') {
                         option = 'X';
                     } else {
+                        scanner.nextLine();
                         System.out.println("Enter new name for account owner:");
                         String name = scanner.nextLine();
+                        System.out.println("New customer name save starting. Chosen name: ");
+                        System.out.println(name);
                         setCustomerName(name);
-                        System.out.println("Customer name successfully changed");
-
+                        System.out.println("Customer name successfully changed to "+name);
                     }
                     break;
                 default:
-                    System.out.println("OPTIONS: A - Check account balance; B - Deposit funds to account; C - Withdraw funds from account; D - Last transaction details; R - Rename account owner; E - Exit;");
+                    System.out.println("OPTIONS: A - Check account balance; B - Deposit funds to account; C - Withdraw funds from account;");
+                    System.out.println("D - Last transaction details; R - Rename account owner; E - Exit;");
                     System.out.println("Please enter UPPERCASE letter to select an option");
                     System.out.println("=====================================================================================");
                     option = scanner.next().charAt(0);
@@ -151,14 +141,5 @@ public class BankAccount {
             }
         } while(option != 'E');
             System.out.println("Thanks for banking with us. You're welcome back any time!");
-    }
-
-    @Override
-    public String toString() {
-        return "Bank Account of " + customerName +
-                ", customer Id: '" + customerId + '\'' +
-                ", current account balance: " + balance +
-                ", last transaction amount: " + transactionAmount +
-                ", account local currency: '" + currency + '\'';
     }
 }
