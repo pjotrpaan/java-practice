@@ -3,9 +3,7 @@ package com.company;
 import com.company.character.*;
 import com.company.item.*;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class Game {
@@ -14,9 +12,8 @@ public class Game {
     static List<Item> playerWeapons;
 
     public static void main(String[] args) throws InterruptedException {
-        World world = new World(10, 5);
+        World world = new World(25, 10);
 
-// TODO: timer
         Enemy enemy = new Enemy("Enemy", CharacterType.WIZARD);
         Friend friend = new Friend("Friend", CharacterType.HERO);
         Player player = new Player("Mihkel", CharacterType.WARRIOR);
@@ -26,6 +23,8 @@ public class Game {
         Sword sword = new Sword();
         Teleporter teleporter = new Teleporter();
 
+        startTimer(timer, enemy);
+
         player.getInventory().addItem(new Hammer());
         player.getInventory().addItem(new Sword());
         player.getInventory().addItem(new Teleporter());
@@ -34,6 +33,25 @@ public class Game {
         world.setCharacters(Arrays.asList(enemy, friend, healer, player));
         world.setItems(Arrays.asList(hammer, sword, boot, teleporter));
         interactWithWorld(world, enemy, friend, player, healer, hammer, boot, sword, teleporter);
+    }
+
+    private static void startTimer(Timer timer, Enemy enemy) {
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println(setInterval(enemy));
+            }
+        }, 1000, 1000);
+    }
+
+    static int interval = 0;
+    static Timer timer = new Timer();
+
+    private static int setInterval(Enemy enemy) {
+        if (!enemy.isVisible()) {
+            interval = 0;
+        }
+        return interval++;
     }
 
     private static void interactWithWorld(
@@ -145,7 +163,7 @@ public class Game {
         System.out.println("Choose a weapon");
         TimeUnit.MILLISECONDS.sleep(100);
         player.getInventory().showInventory();
-        System.out.println("What weapon wil you be using?");
+        System.out.println("What weapon will you be using?");
         Item chosenWeapon = getFightWeapon();
         TimeUnit.MILLISECONDS.sleep(100);
         if (chosenWeapon.getClass().getName().equals("com.company.item.Teleporter")) {
