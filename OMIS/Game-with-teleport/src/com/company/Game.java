@@ -21,17 +21,32 @@ public class Game {
         Friend friend = new Friend("Friend", CharacterType.HERO);
         Player player = new Player("Mihkel", CharacterType.WARRIOR);
         Healer healer = new Healer();
+        Hammer hammer = new Hammer();
+        Boot boot = new Boot();
+        Sword sword = new Sword();
+        Teleporter teleporter = new Teleporter();
+
         player.getInventory().addItem(new Hammer());
         player.getInventory().addItem(new Sword());
         player.getInventory().addItem(new Teleporter());
         player.getInventory().showInventory();
         // Player always last as it overwrites on the map
         world.setCharacters(Arrays.asList(enemy, friend, healer, player));
-        world.setItems(Arrays.asList(new Hammer(), new Sword(), new Boot(), new Teleporter()));
-        movePlayer(world, enemy, friend, player, healer);
+        world.setItems(Arrays.asList(hammer, sword, boot, teleporter));
+        interactWithWorld(world, enemy, friend, player, healer, hammer, boot, sword, teleporter);
     }
 
-    private static void movePlayer(World world, Enemy enemy, Friend friend, Player player, Healer healer) throws InterruptedException {
+    private static void interactWithWorld(
+            World world,
+            Enemy enemy,
+            Friend friend,
+            Player player,
+            Healer healer,
+            Hammer hammer,
+            Boot boot,
+            Sword sword,
+            Teleporter teleporter) throws InterruptedException
+    {
         String input = "";
         world.render();
         while(!input.equals("end")){
@@ -58,7 +73,23 @@ public class Game {
                     player.move();
                     break;
             }
+            findItem(player, hammer, sword, boot, teleporter);
             meetCharacter(world, enemy, friend, player, healer);
+        }
+    }
+
+    private static void findItem(Player player, Hammer hammer, Sword sword, Boot boot, Teleporter teleporter) {
+        if (player.getxCoord() == hammer.getxCoord() && player.getyCoord() == hammer.getyCoord()) {
+            player.getInventory().addItem(hammer);
+        }
+        if (player.getxCoord() == sword.getxCoord() && player.getyCoord() == sword.getyCoord()) {
+            player.getInventory().addItem(sword);
+        }
+        if (player.getxCoord() == boot.getxCoord() && player.getyCoord() == boot.getyCoord()) {
+            player.getInventory().addItem(boot);
+        }
+        if (player.getxCoord() == teleporter.getxCoord() && player.getyCoord() == teleporter.getyCoord()) {
+            player.getInventory().addItem(teleporter);
         }
     }
 
@@ -144,9 +175,11 @@ public class Game {
     private static void useTeleporter(Player player, Enemy enemy, Item chosenWeapon) {
         ((Teleporter) (chosenWeapon)).teleport();
         player.randomiseCoordinates(1, World.getWidth()-1, World.getHeight()-1);
+        double newPlayerHealth = player.getHealth() - chosenWeapon.getStrength();
+        player.setHealth(newPlayerHealth);
         enemy.setVisible(true);
-        System.out.println(player.getHealth());
-        System.out.println(enemy.getHealth());
+        System.out.println("Player health: "+player.getHealth());
+        System.out.println("Enemy health: "+enemy.getHealth());
         return;
     }
 

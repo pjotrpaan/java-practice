@@ -10,8 +10,6 @@ public class Teleporter extends Item {
     }
 
     public void teleport() {
-        double healthLeft = Enemy.getHealth() - strength;
-        Enemy.setHealth(healthLeft);
         System.out.println("Põgenesid teleporteri abil.");
     }
 }

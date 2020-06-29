@@ -58,4 +58,8 @@ public class Item implements WorldObject {
     public String toString() {
         return name + " tugevusega " + strength*1 + ". Kasutuskordi: " + endurance;
     }
+
+    public double getStrength() {
+        return this.strength;
+    }
 }

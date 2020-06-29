@@ -21,7 +21,7 @@ public class Player extends Character {
         return health;
     }
 
-    private static void setHealth(double health) {
+    public static void setHealth(double health) {
         Player.health = health;
     }
     
