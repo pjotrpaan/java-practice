@@ -10,6 +10,6 @@ public class Teleporter extends Item {
     }
 
     public void teleport() {
-        System.out.println("Põgenesid teleporteri abil.");
+        System.out.println("You used the teleporter to escape a possible fight.");
     }
 }

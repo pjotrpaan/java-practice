@@ -104,7 +104,7 @@ public class Game {
             enemy.randomiseCoordinates(1, World.getWidth()-1, World.getHeight()-1);
         }
         if (player.getxCoord() == healer.getxCoord() && player.getyCoord() == healer.getyCoord()) {
-            System.out.println("Ravitseja ravis sind! Su elud on nüüd täis!");
+            System.out.println("Healer fixed you up! Your lives are full!");
             Player.setFullHealth();
             healer.randomiseCoordinates(1, World.getWidth()-1, World.getHeight()-1);
         }
@@ -123,45 +123,45 @@ public class Game {
     private static void enemySeen(Player player, Enemy enemy) throws InterruptedException {
         playerWeapons = player.getInventory().getInventory();
         if(Player.getHealth() > 0 && playerWeapons.size() > 0) {
-            System.out.println("Kohtusid vaenlasega! Kas soovid temaga võidelda? Y/N: ");
+            System.out.println("You bumped into an enemy! Do you wish to fight? Y/N: ");
             String input = scanner.nextLine().toLowerCase();
             if (input.equals("y")) {
                 startBattle(player, enemy);
             } else {
-                System.out.println("Põgenesid vaenlase eest!");
-                System.out.println("Liigu edasi: ");
+                System.out.println("Your fleeing from the enemy!");
+                System.out.println("Move forward.");
             }
         } else if (Player.getHealth() <= 0) {
-            System.out.println("Sul on elud otsas! Otsi üles ravitseja et end ravida");
+            System.out.println("Out of lives! Find a healer from the playing field.");
         } else if (playerWeapons.size() <= 0) {
-            System.out.println("Sul on relvad otsas! Püüa neid mänguväljakult");
+            System.out.println("You're out of weapons! Catch them from the playing field.");
         }
 
     }
 
     private static void startBattle(Player player, Enemy enemy) throws InterruptedException {
-        System.out.println("Algas lahing");
+        System.out.println("Prepare for battle!");
         TimeUnit.MILLISECONDS.sleep(100);
-        System.out.println("Sul on järgmine valik relvi: ");
+        System.out.println("Choose a weapon");
         TimeUnit.MILLISECONDS.sleep(100);
         player.getInventory().showInventory();
-        System.out.println("Vali number millist relva kasutad: ");
+        System.out.println("What weapon wil you be using?");
         Item chosenWeapon = getFightWeapon();
         TimeUnit.MILLISECONDS.sleep(100);
         if (chosenWeapon.getClass().getName().equals("com.company.item.Teleporter")) {
             useTeleporter(player, enemy, chosenWeapon);
             return;
         } else {
-            System.out.println("Hakkasid võitlema!!");
+            System.out.println("Fight has begun!");
             while (Player.getHealth()>0 || Enemy.getHealth()>0) {
                 if (Player.getHealth() <= 0) {
-                    System.out.println("Said surma!");
+                    System.out.println("You died!");
                     break;
                 }
                 if (Enemy.getHealth() <= 0) {
                     TimeUnit.MILLISECONDS.sleep(100);
                     counter++;
-                    System.out.println("Vaenlane käes!! Oled püüdnud vaenlasi: " + counter);
+                    System.out.println("Enemy caught! Your caught and killed count: " + counter);
                     break;
                 }
                 fightEnemy(chosenWeapon, player, enemy);
@@ -169,7 +169,7 @@ public class Game {
         }
         Enemy.reboost();
         TimeUnit.MILLISECONDS.sleep(100);
-        System.out.println("Liigu edasi: ");
+        System.out.println("Press Enter to move forward.");
     }
 
     private static void useTeleporter(Player player, Enemy enemy, Item chosenWeapon) {
@@ -197,22 +197,22 @@ public class Game {
                         .findFirst()
                         .ifPresent(e -> e.setEndurance(e.getEndurance()-1));
             } catch (NumberFormatException e) {
-                System.out.println("Sisestasid numbri asemel tähe! Sisesta uuesti!");
+                System.out.println("You entered a character. A number is needed to choose!");
                 input = scanner.nextLine();
             } catch (IndexOutOfBoundsException e) {
-                System.out.println("Sellise numbriga relva ei ole! Sisesta uuesti!");
+                System.out.println("Entered number weapon does not exist. Please enter an existing weapon number!");
                 input = scanner.nextLine();
             }
         }
-        System.out.println("Valisid relva: " + chosenWeapon.getName());
+        System.out.println("Weapon chosen: " + chosenWeapon.getName());
         return chosenWeapon;
     }
 
     private static void fightEnemy(Item chosenWeapon, Player player, Enemy enemy) {
-        System.out.println(player.getHealth());
-        System.out.println(enemy.getHealth());
+        System.out.println("Player health: "+player.getHealth());
+        System.out.println("Enemy health: "+enemy.getHealth());
         String input;
-        System.out.println("Ütle number millega võitled vahemikus 1-3");
+        System.out.println("Choose a random number between 1-4.");
         input = scanner.nextLine();
         String enemyNumber = String.valueOf(enemyFightRandomNumber());
         if(input.equals(String.valueOf(enemyFightRandomNumber()))){
@@ -228,7 +228,7 @@ public class Game {
                     break;
             }
         } else {
-            System.out.println("Ei saanud pihta! Vaenlane võttis sult elu");
+            System.out.println("Missed hit! Enemy caught you off-guard and you lost a life!");
             Player.takeHealth();
         }
     }
