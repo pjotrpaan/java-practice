@@ -17,4 +17,13 @@ public class Hammer implements Item {
 	public String getFromDatabase() {
 		return databaseService.getItemFromDatabase();
 	}
+	
+	public void thisIsInitMethod() {
+		System.out.println("Init method");
+	}
+	
+	public void onDestroy() {
+		System.out.println("Destory method");
+	}
+	
 }
