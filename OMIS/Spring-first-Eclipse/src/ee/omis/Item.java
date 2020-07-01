@@ -4,4 +4,5 @@ public interface Item {
 	String getItemDescription();
 
 	String getFromDatabase();
+	
 }

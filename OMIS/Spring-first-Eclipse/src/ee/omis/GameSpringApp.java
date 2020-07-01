@@ -12,7 +12,7 @@ public class GameSpringApp {
 		
 		// Get bean
 		Item myItem = context.getBean("item", Item.class);
-		Item myItemBoot = context.getBean("itemBoot", Item.class);
+		Boot myItemBoot = context.getBean("itemBoot", Boot.class);
 		
 		// Create methods
 		System.out.println("Spring: " +myItem.getItemDescription());
@@ -20,6 +20,10 @@ public class GameSpringApp {
 		
 		System.out.println("SpringBoot: " +myItemBoot.getItemDescription());
 		System.out.println("SpringBoot: " +myItemBoot.getFromDatabase());
+		System.out.println("SpringBoot: " +myItemBoot.getEndurance());
+		System.out.println("SpringBoot: " +myItemBoot.getLevel());
+//		System.out.println("SpringBoot: " +myItemBoot.setEndurance());
+		System.out.println("SpringBoot: " +myItemBoot.setLevel("GOLD"));
 		
 		// Close connection
 		context.close();
