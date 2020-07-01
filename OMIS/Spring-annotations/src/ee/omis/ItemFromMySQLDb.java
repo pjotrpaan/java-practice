@@ -1,5 +1,7 @@
 package ee.omis;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ItemFromMySQLDb implements ItemFromDb {
 
 	@Override

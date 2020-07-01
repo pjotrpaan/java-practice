@@ -11,12 +11,12 @@ public class GameSpringAnnotationsApp {
 				new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		// Get bean
-		Item playerItem = context.getBean("swordItem", Item.class);
+		Item sword = context.getBean("swordItem", Item.class);
 		Item bootItem = context.getBean("bootItem", Item.class);
 		
 		// Create methods
-		System.out.println(playerItem.getItemDescription());
-
+		System.out.println(sword.getItemDescription());
+		System.out.println(sword.toString());
 		System.out.println(bootItem.getItemDescription());
 
 		// Close connection
