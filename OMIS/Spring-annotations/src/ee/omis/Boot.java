@@ -2,14 +2,13 @@ package ee.omis;
 
 import org.springframework.stereotype.Component;
 
-@Component("swordItem")
-public class Sword implements Item {
+@Component("bootItem")
+public class Boot implements Item {
 
 	@Override
 	public String getItemDescription() {
 		// TODO Auto-generated method stub
-		return "The sword is mighty!";
+		return "Boot in da ass and thou shall not pass";
 	}
-	
-	
+
 }
