@@ -12,7 +12,7 @@ public class HibernateCreate {
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		try {
-		    Item item = new Item("Sword", 3, 3.00, 5, true);
+		    Item item = new Item("Sword", Level.GOLD, 3, 5, true);
 		    SessionFactory sf = (SessionFactory) 
 		    		new Configuration()
 		    		.configure("hibernate.cfg.xml")

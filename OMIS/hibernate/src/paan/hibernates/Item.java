@@ -2,12 +2,14 @@ package paan.hibernates;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="items")
+@Table(name="item")
 public class Item {
 	
+	@Id
 	@Column(name="id")
 	private int id;
 	
@@ -15,7 +17,7 @@ public class Item {
 	private String name;
 	
 	@Column(name="level")
-	private int level;
+	private Level level;
 	
 	@Column(name="strength")
 	private double strength;
@@ -26,13 +28,19 @@ public class Item {
 	@Column(name="visible")
 	private Boolean visible;
 
-	public Item(String name, int level, double strength, int endurance, Boolean visible) {
+	public Item(String name, Level level, double strength, int endurance, Boolean visible) {
 		super();
 		this.name = name;
 		this.level = level;
 		this.strength = strength;
 		this.endurance = endurance;
 		this.visible = visible;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Item [id=%s, name=%s, level=%s, strength=%s, endurance=%s, visible=%s]", id, name, level,
+				strength, endurance, visible);
 	}
 	
 	
