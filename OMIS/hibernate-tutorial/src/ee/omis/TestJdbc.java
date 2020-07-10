@@ -10,7 +10,7 @@ public class TestJdbc {
 		// Test Jdbc connection to MySQL db on localhost
 		String jdbcUrl = "jdbc:mysql://localhost:3306/hibernatetutorial?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		String user = "root";
-		String pw = "root";
+		String pw = "rootpass";
 		
 		try {
 			System.out.println("Connecting to db: " + jdbcUrl);

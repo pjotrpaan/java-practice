@@ -17,7 +17,7 @@ public class ConnectMySQL {
 		
 		try {
 			
-			Student tempStudent = new Student("Paul", "Temp", "paul.temp@temppaul.com");
+			Student tempStudent = new Student("paul.temp@temppaul.com", "Paul", "Temp");
 			
 			session.beginTransaction();
 			

@@ -25,7 +25,7 @@ public class Student {
 		
 	}
 
-	public Student(String firstName, String lastName, String email) {
+	public Student(String email, String firstName, String lastName) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
