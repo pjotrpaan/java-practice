@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;  
 import com.javatpoint.beans.Emp;  
   
-public class EmpDao {  
+public class QualificationDao {  
 JdbcTemplate template;  
   
 public void setTemplate(JdbcTemplate template) {  
