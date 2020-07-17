@@ -41,5 +41,16 @@ public List<Qualification> getQualifications(){
         }  
     });  
 }
- 
+public List<Qualification> getEmpQualifications(int empId){  
+    return template.query("SELECT q.* FROM employees.Employee AS e JOIN employees.qualification AS q ON e.id=q.employeeId WHERE e.id=" + empId,new RowMapper<Qualification>(){  
+        public Qualification mapRow(ResultSet rs, int row) throws SQLException {  
+            Qualification e=new Qualification();  
+            e.setId(rs.getInt(1));  
+            e.setEmployeeId(rs.getInt(2));  
+            e.setQualification(rs.getString(3));  
+            e.setLevel(rs.getInt(4));  
+            return e;  
+        }  
+    });  
+}
 }  

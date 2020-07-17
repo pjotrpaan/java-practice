@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 
 		<h1>Add New Qualification</h1>
-		<h2>${ emp.firstName } ${ emp.lastName }</h2>
+		<h2>${emp.firstName} ${emp.lastName}</h2>
        <form:form method="post" action="save">  
       	<table >  
       	 <tr>  
@@ -23,3 +23,5 @@
          </tr>  
         </table>  
        </form:form>  
+       <br>
+    <a href="/SpringMVCCRUDSimple/">Back to Home page</a>

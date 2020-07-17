@@ -37,28 +37,34 @@ public class QualificationController {
 
     @RequestMapping("/viewqualification/{id}")  
     public String viewemp(@PathVariable int id, Model m){  
-        List<Qualification> list=dao.getQualifications();  
+        List<Qualification> list=dao.getEmpQualifications(id);  
         m.addAttribute("list",list);
-        m.addAttribute("empId", id);
+        
+        Employee emp=employeeDao.getEmployeeById(id);
+        m.addAttribute("emp", emp);
         return "viewqualification";  
     }  
   
     @RequestMapping(value="/editqualification/{id}")  
     public String edit(@PathVariable int id, Model m){  
-        Qualification emp=dao.getQualificationById(id);  
-        m.addAttribute("command",emp);
-        return "empeditform";  
+    	Employee emp=employeeDao.getEmployeeById(id); 
+        Qualification qual=dao.getQualificationById(id);  
+        m.addAttribute("command",qual);
+        m.addAttribute("emp", emp);
+        return "qualificationeditform";  
     }  
  
-    @RequestMapping(value="/editsave",method = RequestMethod.POST)  
-    public String editsave(@ModelAttribute("emp") Qualification emp){  
-        dao.update(emp);  
-        return "redirect:/viewemp";  
-    }  
+//    @RequestMapping(value="/editsave",method = RequestMethod.POST)  
+//    public String editsave(@ModelAttribute("emp") Qualification emp){  
+//        dao.update(emp);  
+//        return "redirect:/viewemp";  
+//    }  
 
     @RequestMapping(value="/deletequalification/{id}",method = RequestMethod.GET)  
     public String delete(@PathVariable int id){  
-        dao.delete(id);  
-        return "redirect:/viewemp";  
+    	Qualification qual=dao.getQualificationById(id);  
+        int empId = qual.getEmployeeId();
+        dao.delete(id);
+        return "redirect:/qualification/viewqualification/" + empId;  
     }   
 }  
