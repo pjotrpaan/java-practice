@@ -26,7 +26,7 @@
          </tr> 
          <tr>  
           <td>Archived :</td>  
-          <td><form:checkbox path="archived" default="false"/></td>
+          <td><form:checkbox path="archived" /></td>
          </tr>
          <tr>  
           <td> </td>  

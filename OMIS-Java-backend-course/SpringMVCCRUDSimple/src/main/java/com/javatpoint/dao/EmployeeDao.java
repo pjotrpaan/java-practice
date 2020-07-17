@@ -50,7 +50,9 @@ public class EmployeeDao {
 	            e.setFirstName(rs.getString(2));  
 	            e.setLastName(rs.getString(3));  
 	            e.setPersonalId(rs.getString(5)); 
-	            e.setDesignation(rs.getString(4));  
+	            e.setDesignation(rs.getString(4));
+	            e.setDate(rs.getString(7));
+	            e.setArchived(rs.getBoolean(6));
 	            System.out.println(e);
 	            return e;  
 	        }  

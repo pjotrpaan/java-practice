@@ -6,48 +6,57 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;  
 import org.springframework.web.bind.annotation.PathVariable;  
 import org.springframework.web.bind.annotation.RequestMapping;  
-import org.springframework.web.bind.annotation.RequestMethod;   
-import com.javatpoint.beans.Emp;  
-import com.javatpoint.dao.EmpDao;  
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.javatpoint.beans.Employee;
+import com.javatpoint.beans.Qualification;
+import com.javatpoint.dao.EmployeeDao;
+import com.javatpoint.dao.QualificationDao;  
 @Controller 
 @RequestMapping("qualification")
 public class QualificationController {  
     @Autowired  
-    EmpDao dao;//will inject dao from xml file  
+    QualificationDao dao;//will inject dao from xml file  
+    
+    @Autowired
+    EmployeeDao employeeDao;
  
-    @RequestMapping("/empform")  
-    public String showform(Model m){  
-    	m.addAttribute("command", new Emp());
-    	return "empform"; 
+    @RequestMapping("/qualificationform/{id}")  
+    public String showform(@PathVariable int id, Model m){  
+    	Employee emp=employeeDao.getEmployeeById(id); 
+    	m.addAttribute("command", new Qualification());
+    	m.addAttribute("emp", emp);
+    	return "qualificationform"; 
     }  
 
-    @RequestMapping(value="/save",method = RequestMethod.POST)  
-    public String save(@ModelAttribute("emp") Emp emp){  
+    @RequestMapping(value="/qualificationform/save",method = RequestMethod.POST)  
+    public String save(@ModelAttribute("emp") Qualification emp){  
         dao.save(emp);  
-        return "redirect:/viewemp";//will redirect to viewemp request mapping  
+        return "redirect:/viewqualification/{id}";//will redirect to viewemp request mapping  
     }  
 
-    @RequestMapping("/viewemp")  
-    public String viewemp(Model m){  
-        List<Emp> list=dao.getEmployees();  
+    @RequestMapping("/viewqualification/{id}")  
+    public String viewemp(@PathVariable int id, Model m){  
+        List<Qualification> list=dao.getQualifications();  
         m.addAttribute("list",list);
-        return "viewemp";  
+        m.addAttribute("empId", id);
+        return "viewqualification";  
     }  
   
-    @RequestMapping(value="/editemp/{id}")  
+    @RequestMapping(value="/editqualification/{id}")  
     public String edit(@PathVariable int id, Model m){  
-        Emp emp=dao.getEmpById(id);  
+        Qualification emp=dao.getQualificationById(id);  
         m.addAttribute("command",emp);
         return "empeditform";  
     }  
  
     @RequestMapping(value="/editsave",method = RequestMethod.POST)  
-    public String editsave(@ModelAttribute("emp") Emp emp){  
+    public String editsave(@ModelAttribute("emp") Qualification emp){  
         dao.update(emp);  
         return "redirect:/viewemp";  
     }  
 
-    @RequestMapping(value="/deleteemp/{id}",method = RequestMethod.GET)  
+    @RequestMapping(value="/deletequalification/{id}",method = RequestMethod.GET)  
     public String delete(@PathVariable int id){  
         dao.delete(id);  
         return "redirect:/viewemp";  
