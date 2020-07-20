@@ -1,7 +1,8 @@
     <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>  
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
    
-    <a href="/SpringMVCCRUDSimple/viewemployee">Back to Employees page</a>
+    <a href="/SpringMVCCRUDSimple/">Home page</a>
+	<a href="/SpringMVCCRUDSimple/viewemployee">Employees page</a>
   
 	<h1>Qualifications List</h1>
 	<table border="2" width="70%" cellpadding="2">
