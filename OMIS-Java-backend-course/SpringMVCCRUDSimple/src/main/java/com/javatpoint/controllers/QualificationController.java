@@ -32,7 +32,7 @@ public class QualificationController {
     @RequestMapping(value="/qualificationform/save",method = RequestMethod.POST)  
     public String save(@ModelAttribute("emp") Qualification emp){  
         dao.save(emp);  
-        return "redirect:/viewqualification/{id}";//will redirect to viewemp request mapping  
+        return "redirect:/qualification/viewqualification/" + emp.getEmployeeId();//will redirect to viewemp request mapping  
     }  
 
     @RequestMapping("/viewqualification/{id}")  
