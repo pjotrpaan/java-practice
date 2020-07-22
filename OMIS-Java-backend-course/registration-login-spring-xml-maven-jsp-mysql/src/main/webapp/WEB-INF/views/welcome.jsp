@@ -16,7 +16,7 @@
     <title>Welcome</title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-
+	<link href="${contextPath}/resources/css/styles.css" rel="stylesheet">	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -30,20 +30,18 @@
         <form id="logoutForm" method="POST" action="${contextPath}/logout">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
-        <div style="text-align:right;padding-top:20px;">
-        	<a onclick="document.forms['logoutForm'].submit()">Logout</a>
-        </div>
-		
-        <h2>| Welcome ${pageContext.request.userPrincipal.name} |</h2>
-        
+
+        <a onclick="document.forms['logoutForm'].submit()" class="log-out-link">Logout</a>
+        <h2>Welcome <span class="name">${pageContext.request.userPrincipal.name}</span></h2>
         <div>
-			<h3 style="display:inline-block">
-				<a href="employeeform">Add Employee</a>
-			</h3>
-			<h3 style="display:inline-block">
-				<a href="viewemployee">View Employees</a>
-			</h3>
+        <h3>
+        <a href="employeeform">Add Employee</a>
+        </h3>
+		<h3>
+		<a href="viewemployee">View Employees</a>
+		</h3>
 		</div>
+        
 
     </c:if>
 

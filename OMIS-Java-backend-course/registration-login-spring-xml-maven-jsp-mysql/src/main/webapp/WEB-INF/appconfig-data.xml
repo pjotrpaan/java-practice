@@ -14,9 +14,9 @@
     <!-- Configure the data source bean -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/accounts"/>
-        <property name="username" value="root"/>
-        <property name="password" value="rootpass"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
     </bean>
 
     <!-- Configure the entity manager factory bean -->
@@ -34,12 +34,24 @@
             </props>
         </property>
     </bean>
+    
+    <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 
     <!-- Configure the transaction manager bean -->
     <bean id="transactionManager"
           class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
+    
+    <bean id="employeeDao" class="com.hellokoding.account.repository.EmployeeDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	
+	<bean id="qualificationDao" class="com.hellokoding.account.repository.QualificationDao">
+		<property name="template" ref="jt"></property>
+	</bean>
 
     <!-- Enable annotation driven transaction management -->
     <tx:annotation-driven/>
@@ -50,17 +62,5 @@
     -->
 
     <jpa:repositories base-package="com.hellokoding.account.repository"/>
-    
-    <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource" ref="dataSource"></property>
-	</bean>
-	
-	<bean id="employeeDao" class="com.hellokoding.account.repository.EmployeeDao">
-	<property name="template" ref="jt"></property>
-	</bean>
-	
-	<bean id="qualificationDao" class="com.hellokoding.account.repository.QualificationDao">
-	<property name="template" ref="jt"></property>
-	</bean>
 
 </beans>
