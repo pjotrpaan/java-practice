@@ -1,17 +1,21 @@
 package com.hellokoding.account.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "employee")
 public class Employee {  
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;  
 	
 	private String firstName;
@@ -20,6 +24,11 @@ public class Employee {
 	private String designation;  
 	private String date;
 	private boolean archived;
+	
+	private List<Qualification> qualifications;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
@@ -67,6 +76,17 @@ public class Employee {
 		return String.format(
 				"Employee [id=%s, firstName=%s, lastName=%s, personalId=%s, designation=%s, date=%s, archived=%s]",
 				id, firstName, lastName, personalId, designation, date, archived);
+	}
+	@OneToMany(cascade= {CascadeType.ALL})
+	@JoinTable(
+			name="qualification",
+			joinColumns=@JoinColumn(name="employeeId"),
+			inverseJoinColumns=@JoinColumn(name="id"))
+	public List<Qualification> getQualifications() {
+		return qualifications;
+	}
+	public void setQualifications(List<Qualification> qualifications) {
+		this.qualifications = qualifications;
 	}
 	
 }  

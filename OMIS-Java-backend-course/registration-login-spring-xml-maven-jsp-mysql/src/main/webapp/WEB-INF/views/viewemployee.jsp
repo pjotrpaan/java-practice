@@ -32,8 +32,8 @@
         </form>
 		<a onclick="document.forms['logoutForm'].submit()" class="log-out-link">Logout</a>
         <h2>Welcome <span class="name">${pageContext.request.userPrincipal.name}</span></h2>
-        <a href="/">Home page</a>
-		<a href="/viewemployee">Employees page</a>
+        
+        <a href="/welcome">Home page</a>
 		
 		<h1>Employees list</h1>
 	    <table border="2" width="100%" cellpadding="4">
@@ -41,24 +41,32 @@
 		<th>Id</th>
 		<th>First name</th>
 		<th>Last name</th>
+		<c:if test="${isAdmin}">
 		<th>Person ID</th>
+		</c:if>
 		<th>Designation</th>
 		<th>Date</th>
 		<th>Qualifications</th>
+		<c:if test="${isAdmin}">
 		<th>Edit</th>
 		<th>Delete</th>
+		</c:if>
 		<th>Archived</th></tr>
 	    <c:forEach var="emp" items="${list}">
 	    <tr>
 	    <td>${emp.id}</td>
 	    <td>${emp.firstName}</td>
 	    <td>${emp.lastName}</td>
+	    <c:if test="${isAdmin}">
 	    <td>${emp.personalId}</td>
+	    </c:if>
 	    <td>${emp.designation}</td>
 	    <td>${emp.date}</td>
-	    <td><a href="qualification/viewqualification/${emp.id}">View qualifications</a></td>
-	    <td><a href="editemployee/${emp.id}">Edit</a></td>
-	    <td><a href="deleteemployee/${emp.id}">Delete</a></td>
+	    <td><a href="/qualification/viewqualification/${emp.id}">View qualifications</a></td>
+	    <c:if test="${isAdmin}">
+	    <td><a href="/editemployee/${emp.id}">Edit</a></td>
+	    <td><a href="/deleteemployee/${emp.id}">Delete</a></td>
+	    </c:if>
 	    <td><input type="checkbox" <c:if test="${emp.archived}">checked</c:if>/></td>
 	    </tr>
 	    </c:forEach>

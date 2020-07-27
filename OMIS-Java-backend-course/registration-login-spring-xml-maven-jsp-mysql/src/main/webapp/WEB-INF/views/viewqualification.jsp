@@ -33,7 +33,7 @@
 
         <a onclick="document.forms['logoutForm'].submit()" class="log-out-link">Logout</a>
         <h2>Welcome <span class="name">${pageContext.request.userPrincipal.name}</span></h2>
-        <a href="/">Home page</a>
+        <a href="/welcome">Home page</a>
 		<a href="/viewemployee">Employees page</a>
 	  
 		<h1>Qualifications List</h1>
@@ -45,7 +45,7 @@
 		</tr>
 	    <c:forEach var="qual" items="${list}"> 
 	    <tr>
-	    <td>${qual.qualification}</td>
+	    <td>${qual.name}</td>
 	    <td>${qual.level}</td>
 	    <td><a href="../deletequalification/${qual.id}">Delete</a></td>
 	    </tr>

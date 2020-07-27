@@ -153,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="SpringMVCCRUDSimple" path="/SpringMVCCRUDSimple" reloadable="true" source="org.eclipse.jst.j2ee.server:SpringMVCCRUDSimple"/><Context docBase="registration-login-spring-xml-maven-jsp-mysql-master" path="/account" reloadable="true" source="org.eclipse.jst.jee.server:registration-login-spring-xml-maven-jsp-mysql-master"/><Context docBase="registration-login-spring-xml-maven-jsp-mysql" path="/account" reloadable="true" source="org.eclipse.jst.jee.server:registration-login-spring-xml-maven-jsp-mysql"/></Host>
+      <Context docBase="SpringMVCCRUDSimple" path="/SpringMVCCRUDSimple" reloadable="true" source="org.eclipse.jst.j2ee.server:SpringMVCCRUDSimple"/><Context docBase="registration-login-spring-xml-maven-jsp-mysql" path="/account" reloadable="true" source="org.eclipse.jst.jee.server:registration-login-spring-xml-maven-jsp-mysql"/></Host>
     </Engine>
   </Service>
 </Server>

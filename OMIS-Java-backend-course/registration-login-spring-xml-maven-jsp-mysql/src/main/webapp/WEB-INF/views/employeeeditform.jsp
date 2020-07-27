@@ -34,7 +34,8 @@
 
         <a onclick="document.forms['logoutForm'].submit()" class="log-out-link">Logout</a>
         <h2>Welcome <span class="name">${pageContext.request.userPrincipal.name}</span></h2>
-<a href="/">Home page</a>
+	
+	<a href="/welcome">Home page</a>
 	<a href="/viewemployee">Employees page</a>
 	
 	<h1>Edit Employee</h1>

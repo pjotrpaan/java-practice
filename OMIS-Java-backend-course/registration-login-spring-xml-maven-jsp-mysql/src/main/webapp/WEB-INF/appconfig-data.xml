@@ -44,10 +44,6 @@
           class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
-    
-    <bean id="employeeDao" class="com.hellokoding.account.repository.EmployeeDao">
-		<property name="template" ref="jt"></property>
-	</bean>
 	
 	<bean id="qualificationDao" class="com.hellokoding.account.repository.QualificationDao">
 		<property name="template" ref="jt"></property>

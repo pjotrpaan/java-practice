@@ -1,10 +1,22 @@
-package com.hellokoding.account.model;  
-  
+package com.hellokoding.account.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="qualification")
 public class Qualification {  
-	private long id;  
+
+	private long id;  	
 	private long employeeId;  
-	private String qualification;  
+	private String name;  
 	private int level;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
@@ -17,11 +29,11 @@ public class Qualification {
 	public void setEmployeeId(long employeeId) {
 		this.employeeId = employeeId;
 	}
-	public String getQualification() {
-		return qualification;
+	public String getName() {
+		return name;
 	}
-	public void setQualification(String qualification) {
-		this.qualification = qualification;
+	public void setName(String qualification) {
+		this.name = qualification;
 	}
 	public int getLevel() {
 		return level;
@@ -32,7 +44,7 @@ public class Qualification {
 	@Override
 	public String toString() {
 		return String.format("Qualification [id=%s, employeeId=%s, qualification=%s, level=%s]", id, employeeId,
-				qualification, level);
+				name, level);
 	}
   
 }  

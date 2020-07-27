@@ -48,7 +48,7 @@
          <tr>  
          <tr>  
           <td>Name : </td> 
-          <td><form:input path="qualification"  /></td>
+          <td><form:input path="name"  /></td>
          </tr>  
          <tr>  
           <td>Level :</td>  
